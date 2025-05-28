@@ -61,3 +61,11 @@ excerpt_separator: "<!--more-->"
       </li>
     </ul>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    if (document.documentElement.innerHTML.includes('"minimal_profile": true')) {
+      document.documentElement.classList.add("minimal-profile");
+    }
+  });
+</script>
