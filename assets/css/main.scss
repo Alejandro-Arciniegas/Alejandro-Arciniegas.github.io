@@ -68,6 +68,31 @@
   box-shadow: none !important;
 }
 
+.btn-show {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 1.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #7b0000c7;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 0.95rem;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.2s;
+  border: none;
+  appearance: none;
+}
+
+.btn-show:hover,
+.btn-show:focus {
+  background-color: #7b0000c7;
+  color: #430000c7; /* Ensure text stays white on hover/focus */
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+
 .minimal-profile-container {
   margin: 0 auto;
   display: flex;
