@@ -319,6 +319,30 @@
   }
 }
 
+.greedy-nav .visible-links a:hover:before {
+  -webkit-transform: scaleX(1);
+      -ms-transform: scaleX(1);
+          transform: scaleX(1); /* reveal */
+  background: #7b0000c7;
+}
+
+.greedy-nav .visible-links .active:before {
+  -webkit-transform: scaleX(1);
+      -ms-transform: scaleX(1);
+          transform: scaleX(1); /* show underline */
+  background: #7b0000c7;
+}
+
+.greedy-nav .visible-links a {
+  position: relative;
+  transition: font-size 0.1s;
+}
+
+.greedy-nav .visible-links a:hover {
+  font-size: 1.15em;
+  color: #7b0000c7;
+}
+
 
 /*
    Navigation list

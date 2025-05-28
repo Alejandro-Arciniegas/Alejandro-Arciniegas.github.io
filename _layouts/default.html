@@ -5,7 +5,7 @@ layout: compress
 {% include base_path %}
 
 <!doctype html>
-<html lang="{{ site.locale | slice: 0,2 }}" class="no-js"{% if site.site_theme == "dark" %} data-theme="dark"{% endif %}>
+<html lang="{{ site.locale | slice: 0,2 }}" class="no-js"{% if site.site_theme == "light" %} data-theme="light"{% endif %}>
   <head>
     {% include head.html %}
     {% include head/custom.html %}
@@ -18,14 +18,25 @@ layout: compress
 
     {{ content }}
 
-    <div class="page__footer">
-      <footer>
-        {% include footer/custom.html %}
-        {% include footer.html %}
-      </footer>
-    </div>
+
 
     {% include scripts.html %}
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('a').forEach(function(link) {
+          const href = link.href;
+          const isExternal = href && !href.startsWith(window.location.origin);
+          const filePattern = /\.(pdf|docx?|pptx?)$/i; // Add or remove extensions as needed
+          if (isExternal || (href && filePattern.test(href))) {
+            link.setAttribute('target', '_blank');
+            link.setAttribute('rel', 'noopener noreferrer');
+          } else {
+            link.removeAttribute('target');
+          }
+        });
+      });
+    </script>
 
   </body>
 </html>

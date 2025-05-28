@@ -1,42 +1,60 @@
 {% include base_path %}
 
 {% if page.author and site.data.authors[page.author] %}
-  {% assign author = site.data.authors[page.author] %}{% else %}{% assign author = site.author %}
+  {% assign author = site.data.authors[page.author] %}
+{% else %}
+  {% assign author = site.author %}
 {% endif %}
 
-<div itemscope itemtype="http://schema.org/Person">
+<div itemscope itemtype="http://schema.org/Person" class="minimal-profile-container">
 
-  <div class="author__avatar">
-    {% if author.avatar contains "://" %}
-    	<img src="{{ author.avatar }}" alt="{{ author.name }}">
-    {% else %}
-    	<img src="{{ author.avatar | prepend: "/images/" | prepend: base_path }}" class="author__avatar" alt="{{ author.name }}">
-    {% endif %}
+  {% if page.minimal_profile %}
+  <div>
+  {% endif %}
+
+    <div class="author__avatar">
+      {% if author.avatar contains "://" %}
+        <img src="{{ author.avatar }}" alt="{{ author.name }}" style="display: block; margin: 0 auto;">
+      {% else %}
+        <img src="{{ author.avatar | prepend: "/images/" | prepend: base_path }}" alt="{{ author.name }}" style="display: block; margin: 0 auto;">
+      {% endif %}
+    </div>
+
+    <div class="author__content">
+      <h3 class="author__name" style="text-align: center;">{{ author.name }}</h3>
+      {% if author.bio %}
+        <p class="author__bio" style="text-align: center;">{{ author.bio }}</p>
+      {% endif %}
+      {% if author.pronouns and page.minimal_profile != true %}
+        <p class="author__pronouns">{{ author.pronouns }}</p>
+      {% endif %}
+      {% if author.email and page.minimal_profile == true %}
+        <p style="text-align: center; margin-top: -1em;">
+          <a href="mailto:{{ author.email }}" style="color: inherit;">
+            <i class="fas fa-fw fa-envelope icon-pad-right" aria-hidden="true"></i>Mail
+          </a>
+        </p>
+      {% endif %}
+    </div>
+
+  {% if page.minimal_profile %}
   </div>
+  {% endif %}
 
-  <div class="author__content">
-    <h3 class="author__name">{{ author.name }}</h3>
-    {% if author.pronouns %}<p class="author__pronouns">{{ author.pronouns }}</p>{% endif %}
-    {% if author.bio %}<p class="author__bio">{{ author.bio }}</p>{% endif %}
-  </div>
-
-  <div class="author__urls-wrapper">
-    <button class="btn btn--inverse">Follow</button>
-    <ul class="author__urls social-icons">
-      <!-- Font Awesome icons / Biographic information  -->
-      {% if author.location %}
-        <li class="author__desktop"><i class="fas fa-fw fa-location-dot icon-pad-right" aria-hidden="true"></i>{{ author.location }}</li>
+  {% unless page.minimal_profile %}
+    <div class="author__urls-wrapper">
+      <button class="btn btn--inverse">Follow</button>
+      <ul class="author__urls social-icons">
+        <!-- Social icons and extra information -->
+        {% if author.location %}
+          <li class="author__desktop">
+            <i class="fas fa-fw fa-location-dot icon-pad-right" aria-hidden="true"></i>{{ author.location }}
+          </li>
+        {% endif %}
+        {% if author.email %}
+        <li><a href="mailto:{{ author.email }}"><i class="fas fa-fw fa-envelope icon-pad-right" aria-hidden="true"></i>Mail</a></li>
       {% endif %}
-      {% if author.employer %}
-        <li class="author__desktop"><i class="fas fa-fw fa-building-columns icon-pad-right" aria-hidden="true"></i>{{ author.employer }}</li>
-      {% endif %}
-      {% if author.uri %}
-        <li><a href="{{ author.uri }}"><i class="fas fa-fw fa-link icon-pad-right" aria-hidden="true"></i>{{ site.data.ui-text[site.locale].website_label | default: "Website" }}</a></li>
-      {% endif %}
-      {% if author.email %}
-        <li><a href="mailto:{{ author.email }}"><i class="fas fa-fw fa-envelope icon-pad-right" aria-hidden="true"></i>{{ site.data.ui-text[site.locale].email_label | default: "Email" }}</a></li>
-      {% endif %}
-
+      
       <!-- Font Awesome and Academicons icons / Academic websites -->
       {% if author.academia %}
         <li><a href="{{ author.academia }}"><i class="ai ai-academia ai-fw icon-pad-right" aria-hidden="true"></i>Academia</a></li>
@@ -161,4 +179,6 @@
       {% endif %}      
     </ul>
   </div>
+    {% endunless %}
 </div>
+

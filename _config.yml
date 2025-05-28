@@ -8,11 +8,11 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-site_theme               : "default"
-title                    : "Alejandro Arciniegas Herrera / Personal website"
+site_theme               : "light"
+title                    : "Alejandro Arciniegas Herrera"
 title_separator          : "-"
 name                     : &name "Alejandro"
-description              : &description "personal description"
+description              : &description "Economics PhD candidate at Sorbonne Economics Centre, Paris, France. Researching food insecurity in Latin America."
 url                      : https://Alejandro-Arciniegas.github.io # the base hostname & protocol for your site e.g. "https://Alejandro-Arciniegas.github.io" or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "Alejandro-Arciniegas/Alejandro-Arciniegas.github.io"
@@ -24,12 +24,12 @@ author:
   # Biographic information
   avatar           : "profile.png"
   name             : "Alejandro"
-  pronouns         : "he/him"
-  bio              : "Economics PhD candidate"
-  location         : "Paris, FR"
-  employer         : "Sorbonne Economics Centre"
+  bio              : "Ph.D. Candidate in Economics"
+  pronouns         : "He/Him"
+  location         : "Paris, France"
+  employer         : [ "https://www.openstreetmap.org/#map=19/48.835396/2.358261", "Sorbonne Economics Centre" ]
   uri              : # URL
-  email            : "Alejandro.Arciniegas-Herrera at univ-paris1.fr"
+  email            : "Alejandro.Arciniegas-Herrera@univ-paris1.fr"
 
   # Academic websites
   academia         : # URL
@@ -214,16 +214,16 @@ kramdown:
 
 # These settings control the types of collections used by the template
 collections:
+  wip:
+    output: true
+    permalink: /:collection/:path/
+  conferences:
+    output: true
+    permalink: /:collection/:path/
   teaching:
     output: true
     permalink: /:collection/:path/
-  publications:
-    output: true
-    permalink: /:collection/:path/
-  portfolio:
-    output: true
-    permalink: /:collection/:path/
-  talks:
+  miscellaneous:
     output: true
     permalink: /:collection/:path/
 
@@ -248,6 +248,15 @@ defaults:
     values:
       layout: single
       author_profile: true
+    # _wip
+  - scope:
+      path: ""
+      type: wip
+    values:
+      layout: single
+      author_profile: true
+      share: true
+      comments: true
   # _teaching
   - scope:
       path: ""
@@ -257,32 +266,23 @@ defaults:
       author_profile: true
       share: true
       comments: true
-  # _publications
+  # _conferences
   - scope:
       path: ""
-      type: publications
+      type: conferences
+    values:
+      layout: talk
+      author_profile: true
+      share: true
+ # _miscellaneous
+  - scope:
+      path: ""
+      type: miscellaneous
     values:
       layout: single
       author_profile: true
       share: true
       comments: true
-  # _portfolio
-  - scope:
-      path: ""
-      type: portfolio
-    values:
-      layout: single
-      author_profile: true
-      share: true
-      comment: true
-  # _talks
-  - scope:
-      path: ""
-      type: talks
-    values:
-      layout: talk
-      author_profile: true
-      share: true
 
 
 # Sass/SCSS

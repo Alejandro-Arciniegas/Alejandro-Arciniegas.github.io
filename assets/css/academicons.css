@@ -5,7 +5,7 @@
  *  Licenses - Font: SIL OFL 1.1, CSS: MIT License
  */
 @font-face {
-    font-family: 'Academicons';
+    font-family: 'Helvetica Neue';
     font-style: normal;
     font-weight: 400;
     font-display: block;
@@ -568,4 +568,30 @@ border-radius: .1em;
 }
 .ai-inverse {
   color: #fff;
+}
+
+a {
+  color: #7b0000c7;
+  text-decoration: none !important;
+  transition: color 0.05s ease;
+}
+
+a:hover {
+  color: #da0000c7;
+  text-decoration: none !important;
+}
+
+.profile-wrapper {
+    display: inline-block;
+    padding: 4px; /* gap between the image and the border */
+    border: 2px solid #FFCCCC; /* light red border */
+    border-radius: 50%; /* makes the border round */
+}
+
+.profile-wrapper .profile-img {
+    display: block;
+    width: 150px; /* adjust as needed */
+    height: 150px; /* adjust as needed */
+    object-fit: cover;
+    border-radius: 50%; /* makes the image round */
 }
