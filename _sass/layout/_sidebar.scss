@@ -24,6 +24,12 @@
     padding-top: $masthead-height;
   }
 
+  @media (max-width: 600px) {
+  .minimal-profile-container {
+    height: auto; /* or 'unset' depending on the layout */
+  }
+}
+
   @include breakpoint($large) {
     @include span(2 of 12);
     opacity: 1;
