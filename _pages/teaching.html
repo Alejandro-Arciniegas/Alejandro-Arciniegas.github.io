@@ -177,3 +177,11 @@ details[open] summary::after {
   transform: rotate(-90deg);
 }
 </style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    if (document.documentElement.innerHTML.includes('"minimal_profile": true')) {
+      document.documentElement.classList.add("minimal-profile");
+    }
+  });
+</script>
